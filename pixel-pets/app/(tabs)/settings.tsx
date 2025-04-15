@@ -1,18 +1,11 @@
-import {
-  StyleSheet,
-  Image,
-  Platform,
-  View,
-  Text,
-  TouchableOpacity,
-  Button,
-} from "react-native";
+import { StyleSheet, Button, SafeAreaView } from "react-native";
 import GeoLocation from "react-native-geolocation-service";
 
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
+import MaskedView from "@react-native-masked-view/masked-view";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function TabTwoScreen() {
   const doUpdateLocation = async () => {
@@ -38,28 +31,37 @@ export default function TabTwoScreen() {
   };
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#F2F2F7", dark: "#353636" }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }
-    >
-      {/* 解锁高级功能 */}
+    <SafeAreaView style={{ ...styles.container }}>
       <ThemedView style={{ ...styles.unlockPremium }}>
-        <IconSymbol
-          size={32}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-        />
+        <MaskedView
+          style={{ height: 36, width: 36 }}
+          maskElement={
+            <IconSymbol size={36} color="#808080" name="star.circle.fill" />
+          }
+        >
+          <LinearGradient
+            colors={["#0E7AFE", "#AD52DE"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{ flex: 1 }}
+          />
+        </MaskedView>
         <ThemedView style={{ ...styles.unlockPremiumTextContent }}>
-          <ThemedText style={styles.unlockPremiumTextTitle}>
-            Unlock Premium
-          </ThemedText>
+          <MaskedView
+            style={{ height: 24, width: "auto" }}
+            maskElement={
+              <ThemedText style={styles.unlockPremiumTextTitle}>
+                Unlock Premium
+              </ThemedText>
+            }
+          >
+            <LinearGradient
+              colors={["#0E7AFE", "#AD52DE"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={{ flex: 1 }}
+            />
+          </MaskedView>
           <ThemedText style={styles.unlockPremiumTextSubtitle}>
             All the Pets + widget backgrounds!
           </ThemedText>
@@ -69,45 +71,34 @@ export default function TabTwoScreen() {
       {/* 设置列表 */}
       <ThemedView style={{ ...styles.settingsContent }}>
         <ThemedView style={{ ...styles.settingsItem }}>
-          <IconSymbol
-            size={24}
-            color="#808080"
-            name="chevron.left.forwardslash.chevron.right"
-          />
+          <IconSymbol size={24} color="#FF9500" name="sun.max.fill" />
           <ThemedText style={styles.settingsItemTextTitle}>
             Update Location
           </ThemedText>
         </ThemedView>
         <ThemedView style={{ ...styles.settingsItem }}>
-          <IconSymbol
-            size={24}
-            color="#808080"
-            name="chevron.left.forwardslash.chevron.right"
-          />
+          <IconSymbol size={24} color="#34C759" name="thermometer.medium" />
           <ThemedText style={styles.settingsItemTextTitle}>
             Temperature Unit
           </ThemedText>
         </ThemedView>
         <ThemedView style={{ ...styles.settingsItem }}>
-          <IconSymbol
-            size={24}
-            color="#808080"
-            name="chevron.left.forwardslash.chevron.right"
-          />
+          <IconSymbol size={24} color="#007AFF" name="info.circle.fill" />
           <ThemedText style={styles.settingsItemTextTitle}>About</ThemedText>
         </ThemedView>
       </ThemedView>
-      <Button onPress={doUpdateLocation} title="Update Location"></Button>
-    </ParallaxScrollView>
+      <ThemedText style={{ fontSize: 14, color: "#85858B" }}>
+        Pixel Pets v0.0.1
+      </ThemedText>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: "#808080",
-    bottom: -90,
-    left: -35,
-    position: "absolute",
+  container: {
+    flex: 1,
+
+    alignContent: "center",
   },
   unlockPremium: {
     borderRadius: 14,
@@ -117,6 +108,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // height: 98,
     gap: 8,
+    margin: 12,
   },
   unlockPremiumIcon: {},
   unlockPremiumTextContent: {
@@ -137,6 +129,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: 6,
     gap: 8,
+    margin: 12,
   },
   settingsItem: {
     backgroundColor: "#FFFFFF",

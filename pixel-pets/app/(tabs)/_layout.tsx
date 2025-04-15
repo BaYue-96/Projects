@@ -22,6 +22,7 @@ export default function TabLayout() {
           ios: {
             // Use a transparent background on iOS to show the blur effect
             position: "absolute",
+            background: "transparent",
           },
           default: {},
         }),
@@ -32,7 +33,7 @@ export default function TabLayout() {
         options={{
           title: "Pets",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
+            <IconSymbol size={28} name="pawprint" color={color} />
           ),
         }}
       />
@@ -41,7 +42,7 @@ export default function TabLayout() {
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+            <IconSymbol size={28} name="gear" color={color} />
           ),
         }}
       />
