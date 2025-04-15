@@ -106,9 +106,8 @@ const styles = StyleSheet.create({
     padding: 12,
     flexDirection: "row",
     alignItems: "center",
-    // height: 98,
     gap: 8,
-    margin: 12,
+    margin: 24,
   },
   unlockPremiumIcon: {},
   unlockPremiumTextContent: {
@@ -129,7 +128,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: 6,
     gap: 8,
-    margin: 12,
+    margin: 24,
+    marginTop: 0,
   },
   settingsItem: {
     backgroundColor: "#FFFFFF",
